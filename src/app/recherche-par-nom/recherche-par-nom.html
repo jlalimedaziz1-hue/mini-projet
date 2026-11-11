@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Recherche par nom de stade</h2>
+
+  <form class="form-inline mb-4" (submit)="$event.preventDefault(); rechercherStades()">
+    <div class="form-group mb-2">
+      <label for="nomStade" class="form-label">Nom du stade</label>
+      <input
+        id="nomStade"
+        type="text"
+        class="form-control"
+        [(ngModel)]="nomStade"
+        name="nomStade">
+      <button type="button" (click)="rechercherStades()" class="btn btn-primary mt-2">
+        Rechercher
+      </button>
+    </div>
+  </form>
+
+  <form class="form-inline mb-4">
+    <div class="form-group mb-2">
+      <label for="searchTerm" class="form-label">Nom du stade en tapant (keyup)</label>
+      <input
+        id="searchTerm"
+        class="form-control"
+        #searchInput
+        (keyup)="onKeyUp(searchInput.value)">
+    </div>
+  </form>
+
+  <form class="form-inline mb-4">
+    <div class="form-group mb-2">
+      <label for="pipeSearch" class="form-label">Nom du stade avec pipe</label>
+      <input
+        id="pipeSearch"
+        class="form-control"
+        [(ngModel)]="searchTerm"
+        name="searchTerm">
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered text-center align-middle">
+      <thead class="table-dark">
+        <tr><th>ID</th><th>Nom du stade</th><th>Ville</th><th>Capacité</th><th>Date de création</th><th>Type de stade</th></tr>
+      </thead>
+      <tbody>
+        @for (stade of stades | searchFilter: searchTerm; track stade.idStade) {
+          <tr>
+            <td>{{ stade.idStade }}</td>
+            <td>{{ stade.nomStade }}</td>
+            <td>{{ stade.ville }}</td>
+            <td>{{ stade.capacite }}</td>
+            <td>{{ stade.dateCreation | date:'dd/MM/yyyy' }}</td>
+            <td>{{ stade.typeStade.nomCat }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

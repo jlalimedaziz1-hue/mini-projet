@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Recherche par type de stade</h2>
+
+  <div class="col-sm-4 mb-4">
+    <label for="idTypeStade" class="form-label">Type de stade</label>
+    <select
+      class="form-select"
+      id="idTypeStade"
+      name="idTypeStade"
+      [(ngModel)]="idTypeStade"
+      (change)="onChange()">
+      <option [ngValue]="0">Tous les types</option>
+      @for (type of typesStade; track type.idCat) {
+        <option [ngValue]="type.idCat">{{ type.nomCat }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered text-center align-middle">
+      <thead class="table-dark">
+        <tr><th>ID</th><th>Nom du stade</th><th>Ville</th><th>Capacité</th><th>Date de création</th><th>Type de stade</th></tr>
+      </thead>
+      <tbody>
+        @for (stade of stades; track stade.idStade) {
+          <tr>
+            <td>{{ stade.idStade }}</td>
+            <td>{{ stade.nomStade }}</td>
+            <td>{{ stade.ville }}</td>
+            <td>{{ stade.capacite }}</td>
+            <td>{{ stade.dateCreation | date:'dd/MM/yyyy' }}</td>
+            <td>{{ stade.typeStade.nomCat }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    @if (stades.length === 0) {
+      <p class="text-center">Aucun stade trouvé.</p>
+    }
+  </div>
+</div>

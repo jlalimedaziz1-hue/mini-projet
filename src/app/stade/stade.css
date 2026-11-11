@@ -1,0 +1,33 @@
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #212529;
+  font-weight: bold;
+}
+
+.table {
+  margin-top: 20px;
+  vertical-align: middle;
+}
+
+.table th,
+.table td {
+  padding: 14px;
+}
+
+.btn {
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+body {
+  background-color: #f5f6fa;
+}

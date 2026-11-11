@@ -1,0 +1,83 @@
+
+<div class="container mt-4">
+
+  <h2 class="text-center mb-4">Modifier un Stade</h2>
+
+  <form (ngSubmit)="modifierStade()">
+
+    <div class="mb-3">
+      <label class="form-label">ID Stade</label>
+      <input
+        type="number"
+        class="form-control"
+        name="idStade"
+        [(ngModel)]="stade.idStade"
+        readonly>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Nom du Stade</label>
+      <input
+        type="text"
+        class="form-control"
+        name="nomStade"
+        [(ngModel)]="stade.nomStade"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Ville</label>
+      <input
+        type="text"
+        class="form-control"
+        name="ville"
+        [(ngModel)]="stade.ville"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Capacité</label>
+      <input
+        type="number"
+        class="form-control"
+        name="capacite"
+        [(ngModel)]="stade.capacite"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Date de création</label>
+      <input
+        type="date"
+        class="form-control"
+        name="dateCreation"
+        [(ngModel)]="stade.dateCreation"
+        required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Type de stade</label>
+      <select
+        class="form-select"
+        name="updatedCatId"
+        [(ngModel)]="updatedCatId"
+        required>
+        @for (cat of categories; track cat.idCat) {
+          <option [value]="cat.idCat">
+            {{ cat.nomCat }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-warning me-2">
+      Modifier
+    </button>
+
+    <a routerLink="/stade" class="btn btn-secondary">
+      Annuler
+    </a>
+
+  </form>
+
+</div>
